@@ -1,0 +1,6 @@
+PC, Sims 3 Circus Edition, 3, 1, 4GB, 107MB
+Console, Batman Arkham Nights, 2, 2, Playstation, 4
+Mobile, Bejewled, Unlimited, 3, iPhone(iOS), 5+
+PC, Civilization, 10, 4, 8GB, 780MB
+Console, Halo, 8, 5, XBox, 360
+Mobile, Criminal Case, Unlimited, 6, LG (Android), G4
