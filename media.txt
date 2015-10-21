@@ -1,0 +1,49 @@
+Type: PC
+Game name: Sims 3 Circus Edition
+Number of copies: 3
+Game ID: 1
+Minimum Memory Requirments: 4GB
+Minimum Disc Requirement: 107MB
+
+Type: Console
+Game name: Batman Arkham Nights
+Number of copies: 2
+Game ID: 2
+Console Platform: Playstation
+ Console Version: 4
+
+Type: Mobile
+Game name: Bejewled
+Number of copies: Unlimited
+Game ID: 3
+Device Type: iPhone(iOS)
+Device Version: 5+
+
+Type: PC
+Game name: Civilization
+Number of copies: 10
+Game ID: 4
+Minimum Memory Requirments: 8GB
+Minimum Disc Requirement: 780MB
+
+Type: Console
+Game name: Halo
+Number of copies: 8
+Game ID: 5
+Console Platform: XBox
+ Console Version: 360
+
+Type: Mobile
+Game name: Criminal Case
+Number of copies: Unlimited
+Game ID: 6
+Device Type: LG (Android)
+Device Version: G4
+
+Type: PC
+Game name: Crayola Adola
+Number of copies: 4
+Game ID: 7
+Minimum Memory Requirments: 4GB
+Minimum Disc Requirement: 33MB
+

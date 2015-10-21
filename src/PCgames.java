@@ -23,10 +23,10 @@ public class PCgames extends Games {
 	 * @param minMemoryReq
 	 * @param minDiscReq
 	 */
-	public PCgames(String gameName, String numberOfCopies, String gameID, 
+	public PCgames(String type, String gameName, String numberOfCopies, String gameID, 
 				String minMemoryReq, String minDiscReq) {
 		
-		super(gameName, numberOfCopies, gameID);
+		super(type,gameName, numberOfCopies, gameID);
 		this.minMemoryReq = minMemoryReq;
 		this.minDiscReq = minDiscReq;
 	}
@@ -69,8 +69,8 @@ public class PCgames extends Games {
 	@Override
 	public String toString()
 	{
-		return String.format("Type: PC\n%sMinimum Memory Requirments: %s\nMinimum Disc Requirement: %s\n",
-				super.toString(),this.minMemoryReq,this.minDiscReq, super.toString());
+		return String.format("%sMinimum Memory Requirments: %s\nMinimum Disc Requirement: %s\n",
+				super.toString(),this.minMemoryReq,this.minDiscReq);
 	}
 
 }

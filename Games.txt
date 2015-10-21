@@ -4,3 +4,5 @@ Mobile, Bejewled, Unlimited, 3, iPhone(iOS), 5+
 PC, Civilization, 10, 4, 8GB, 780MB
 Console, Halo, 8, 5, XBox, 360
 Mobile, Criminal Case, Unlimited, 6, LG (Android), G4
+PC, Crayola Adola, 4, 7, 4GB, 33MB
+Console, Star Wars, 1, 8, XBox, 360

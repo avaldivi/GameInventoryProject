@@ -3,6 +3,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 /**Class: InventoryTester.java
@@ -12,14 +13,14 @@ import java.util.Scanner;
  * Written: August 25, 2015
 *
 *
-* This class – now describe what the class does *
-* Purpose: – Describe the purpose of this class 
+* This class – will create an arraylist of objects read from the Games.txt file and put them
+* 				into an array with help of the BST class. It will print Pre and Post order of Tree Nodes.
+* Purpose: – To understand Binary Search Tree
 * */
 
 public class InventoryTester {
 
 	private static ArrayList<Games> gameAL = new ArrayList<Games>();
-		
 	
 	/**
 	 * Method name: printGames
@@ -40,7 +41,7 @@ public class InventoryTester {
 	 * Use the getGameID method to equal ID when removing or searching
 	 * Given by Dr.Johnson
 	 */
-	public Games searchById(String id)
+	public static Games searchById(String id)
 	   {
 	      Games item = null;
 	      for (Games temp : gameAL)
@@ -59,7 +60,7 @@ public class InventoryTester {
 	 * @param id
 	 * method to remove item by entering game's ID
 	 */
-	public Games removeItem(int id)
+	public static Games removeItem(int id)
 	   {
 	      return gameAL.remove(id);
 	   }
@@ -73,7 +74,9 @@ public class InventoryTester {
 	public static void main(String[] args) throws IOException 
 	{
 		// object to connect methods to main
-		InventoryTester gameInventory = new InventoryTester();
+		//InventoryTester gameInventory = new InventoryTester();
+		
+	
 		//gameInventory.getGameAL()
 		
 		// open file
@@ -93,7 +96,7 @@ public class InventoryTester {
 	      // As the scanner reads each line it will place each attribute into an array
 	      // first nothing if weather it is a pc, mobile, or console game
 	      // if not will return Unknown game type
-	      while (inventoryReader.hasNextLine())
+	      while (inventoryReader != null && inventoryReader.hasNextLine())
 	    	  
 			{
 				String inventoryInfo = inventoryReader.nextLine();
@@ -101,17 +104,19 @@ public class InventoryTester {
 
 				if (gameArray.length == 6 && gameArray[0].equalsIgnoreCase("PC"))
 				{
-					PCgames pc = new PCgames(gameArray[1], gameArray[2], gameArray[3], gameArray[4], gameArray[5]);
+					PCgames pc = new PCgames(gameArray[0],gameArray[1], gameArray[2], gameArray[3], gameArray[4], gameArray[5]);
 					gameAL.add(pc);
+					
 				}
 				else if (gameArray.length == 6 && gameArray[0].equalsIgnoreCase("Console") )
 				{
-					ConsoleGames cg = new ConsoleGames(gameArray[1], gameArray[2], gameArray[3], gameArray[4], gameArray[5]);
+					ConsoleGames cg = new ConsoleGames(gameArray[0],gameArray[1], gameArray[2], gameArray[3], gameArray[4], gameArray[5]);
 					gameAL.add(cg);
+
 				}
 				else if (gameArray.length == 6 && gameArray[0].equalsIgnoreCase("Mobile") )
 				{
-					MobileGames mg = new MobileGames(gameArray[1], gameArray[2], gameArray[3], gameArray[4], gameArray[5]);
+					MobileGames mg = new MobileGames(gameArray[0],gameArray[1], gameArray[2], gameArray[3], gameArray[4], gameArray[5]);
 					gameAL.add(mg);
 				}
 				else
@@ -120,8 +125,24 @@ public class InventoryTester {
 		         }
 			}
 	      
+	      // Put gameAL into gameArray
+	      Games[] gameArray =new Games [gameAL.size()];
+	      
+	      for (int i = 0; i < gameAL.size(); i++)
+	      {
+	    	  //GameLibrary temp = libraryItems.get(i);
+	    	  gameArray[i] = gameAL.get(i); 
+	    	  //System.out.println(gameAL.get(i));
+	      }
+	      
+	      // Instance method to call BST class
+	      BST<Games> tree = new BST<Games>(gameArray);
+	      //Sort gameAL from compareTo method
+	      Collections.sort(gameAL);
 	      // This will allow the user to be able input their option which will
 	      // include viewing, searching, or removing games
+	      
+	      
 	      Scanner keyboard = new Scanner(System.in);
 
 	      System.out.println("List of Games");
@@ -132,17 +153,17 @@ public class InventoryTester {
 	         System.out.println("  1. View all games");
 	         System.out.println("  2. Search for a game");
 	         System.out.println("  3. Remove a game");
-	         System.out.println("  4. Exit");
+	         System.out.println("  4. Save and Exit");
 	         int userInput = keyboard.nextInt();
 	         if (userInput == 1)
 	         {
-	            gameInventory.printGames();
+	            printGames();
 	         } 
 	         else if (userInput == 2)
 	         {
 	            System.out.println("Please enter and ID number");
 	            String id = keyboard.next();
-	            Games item = gameInventory.searchById(id);
+	            Games item = searchById(id);
 	            if (item != null)
 	            {
 	               System.out.println(item);
@@ -156,7 +177,7 @@ public class InventoryTester {
 	         {
 	        	 System.out.println("Please enter an ID number");
 	             int id = (keyboard.nextInt() - 1);
-	             Games item = gameInventory.removeItem(id);
+	             Games item = removeItem(id);
 	             if (item != null)
 	             {
 	            	System.out.println("This game below will be deleted");
@@ -181,21 +202,32 @@ public class InventoryTester {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
-	            for (Games g : gameInventory.getGameAL())
+	            for (Games g : gameAL)
                 {
                     // first write the attributes common to all
-                    out.println(gameAL);
+                    out.println(g);
                 }
-                out.close();    
+                out.close();   
+            
 	            
 	         }
+	         
 	      }
+	      
+	      System.out.println("\n******Binary Search Tree Orders*******\n\n");
+	      System.out.println("-------------Preorder------------\n");
+	      tree.preorder();
+	      System.out.println("-------------Postorder-----------\n");
+          tree.postorder();
 	}
 
+	
 	private ArrayList<Games> getGameAL() {
 		// TODO Auto-generated method stub
 		return gameAL;
 	}
+	
+	
 }
 
 	

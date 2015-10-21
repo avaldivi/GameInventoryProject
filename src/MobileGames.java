@@ -21,9 +21,9 @@ public class MobileGames extends Games {
 	 * @param numberOfCopies
 	 * @param gameID
 	 */
-	public MobileGames(String gameName, String numberOfCopies, String gameID, 
+	public MobileGames(String type,String gameName, String numberOfCopies, String gameID, 
 						String deviceType, String deviceVersion) {
-		super(gameName, numberOfCopies, gameID);
+		super(type,gameName, numberOfCopies, gameID);
 		this.deviceType = deviceType;
 		this.deviceVersion = deviceVersion;
 	}
@@ -66,7 +66,7 @@ public class MobileGames extends Games {
 	@Override
 	public String toString()
 	{
-		return String.format( "Type: Mobile\n%sDevice Type: %s\nDevice Version: %s\n",
+		return String.format( "%sDevice Type: %s\nDevice Version: %s\n",
 				super.toString(),this.deviceType,this.deviceVersion);
 	}
 	

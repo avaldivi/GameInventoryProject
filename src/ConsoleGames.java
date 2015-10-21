@@ -21,8 +21,8 @@ public class ConsoleGames extends Games {
 	 * @param numberOfCopies
 	 * @param gameID
 	 */
-	public ConsoleGames(String gameName, String numberOfCopies, String gameID, String consolePlatform, String consoleVersion) {
-		super(gameName, numberOfCopies, gameID);
+	public ConsoleGames(String type,String gameName, String numberOfCopies, String gameID, String consolePlatform, String consoleVersion) {
+		super(type,gameName, numberOfCopies, gameID);
 		this.consolePlatform = consolePlatform;
 		this.consoleVersion = consoleVersion;
 	}
@@ -58,6 +58,7 @@ public class ConsoleGames extends Games {
 	public void setConsoleVersion(String consoleVersion) {
 		this.consoleVersion = consoleVersion;
 	}
+	
 
 	/* (non-Javadoc)
 	 * @see Inventory#toString()
@@ -65,8 +66,8 @@ public class ConsoleGames extends Games {
 	@Override
 	public String toString()
 	{
-		return String.format("Type: Console\n%sConsole Platform: %s\nConsole Version: %s\n",
-				super.toString(),this.consolePlatform,this.consoleVersion,super.toString());
+		return String.format("%sConsole Platform: %s\n Console Version: %s\n",
+				super.toString(),this.consolePlatform,this.consoleVersion);
 	}
 	
 	
